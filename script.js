@@ -108,4 +108,19 @@ new Vue({
     this.mainSquidAnimation();
     this.titleAnimation();
   }
-});
+}),
+  document.onkeydown = function (e) {
+    return 123 != event.keyCode && !(e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0) || e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0) || e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0) || e.ctrlKey && e.keyCode == "U".charCodeAt(0)) && void 0
+  },
+  $(document).on("contextmenu", function (e) { return !1 });
+var Tawk_API = Tawk_API || {},
+  Tawk_LoadStart = new Date;
+!function () {
+  var e = document.createElement("script"),
+    t = document.getElementsByTagName("script")[0];
+  e.async = !0,
+    e.src = "https://embed.tawk.to/5c6d4867f324050cfe342c69/default",
+
+    e.charset = "UTF-8", e.setAttribute("crossorigin", "*"),
+    t.parentNode.insertBefore(e, t)
+}

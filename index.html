@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Codepen Challenge: Sea Creatures</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sea Creatures</title>
   <link rel="stylesheet" href="./style.css">
   <style>
     .text {
@@ -21,7 +22,7 @@
   </style>
 </head>
 
-<body onkeydown="playAudio('mixkit-forest-walk-607.mp3')">
+<body onkeydown="playAudio('mixkit-forest-walk-607.mp3')" onclick="playAudio('mixkit-forest-walk-607.mp3')">
   <!-- partial:index.partial.html -->
   <div class="container" id="app">
 
@@ -91,15 +92,38 @@
     </svg>
   </template>
   <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
-  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script> -->
+  <!-- <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script> -->
   <!-- <script src='https://assets.codepen.io/16327/MorphSVGPlugin3.min.js'></script> -->
+  <script src="./vue.js"></script>
+  <script src="./gsap.js"></script>
   <script src="./morph.js"></script>
   <script src="./script.js"></script>
-  
+
   <script>
+    // Define a flag to track whether the audio is currently playing
+    var isAudioPlaying = false;
+
     function playAudio(url) {
-      new Audio(url).play();
+      var audio = new Audio(url);
+
+      // Check if the audio is not playing
+      if (!isAudioPlaying) {
+        // Set the flag to true to indicate that the audio is now playing
+        isAudioPlaying = true;
+
+        // Play the audio
+        audio.play();
+
+        // Listen for the 'ended' event to reset the flag when the audio finishes
+        audio.addEventListener('ended', function () {
+          isAudioPlaying = false;
+          playAudio(url)
+        });
+      } else {
+        // Optional: You may want to provide feedback or handle it in a specific way.
+        console.log("Audio is already playing");
+      }
     }
   </script>
 </body>

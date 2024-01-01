@@ -1,9 +1,9 @@
 const Squid = Vue.component("squid", {
   template: "#squid",
 
-  created() {
-    gsap.registerPlugin(MorphSVGPlugin);
-  },
+  // created() {
+  //   gsap.registerPlugin(MorphSVGPlugin);
+  // },
 
   mounted() {
     gsap.set("g", { y: 130 / 2 });

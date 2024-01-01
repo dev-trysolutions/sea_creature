@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Codepen Challenge: Sea Creatures</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    .text {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      color: #fff;
+      max-width: 90%;
+      padding: 2em 3em;
+      background: rgba(0, 0, 0, 0.0);
+      text-shadow: 0px 0px 2px #131415;
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+
+<body onkeydown="playAudio('mixkit-forest-walk-607.mp3')">
+  <!-- partial:index.partial.html -->
+  <div class="container" id="app">
+
+    <div class="murk"></div>
+
+    <div class="title">
+      <p id="location"><small>achilles gulf</small></p>
+      <p id="sea">the trojan sea</p>
+      <h4 id="planet">jupiter</h4 id="planet">
+    </div>
+
+    <!-- <div class="text">
+      <h1>Particles Background</h1>
+      <p>Using <a href="https://github.com/VincentGarreau/particles.js/">ParticlesJS</a> and well.. that's about it,
+        actually ¯\_(ツ)_/¯</p>
+    </div> -->
+
+    <div class="squids">
+      <div class="squid-item" v-for="s in 8" :key="s">
+        <squid></squid>
+      </div>
+    </div>
+
+    <div class="main-squid">
+      <squid></squid>
+    </div>
+
+  </div>
+
+  <template id="squid">
+    <svg viewBox="0 0 400 200" ref="squid">
+      <defs>
+        <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="20%" stop-color="#181D26" stop-opacity="1%" />
+          <stop offset="100%" stop-color="#ff0077" stop-opacity="100%" />
+        </linearGradient>
+
+        <filter id="glow">
+          <fegaussianblur class="blur" result="coloredBlur" stddeviation="1"></fegaussianblur>
+          <femerge>
+            <femergenode in="coloredBlur"></femergenode>
+            <femergenode in="coloredBlur"></femergenode>
+            <femergenode in="coloredBlur"></femergenode>
+            <femergenode in="SourceGraphic"></femergenode>
+          </femerge>
+        </filter>
+
+        <radialGradient cx="40%" r="50%" id="pattern">
+          <stop offset="6%" stop-color="#FF0077" />
+          <stop offset="30%" stop-color="#181D26" />
+          <stop offset="100%" stop-color="#FF0077" />
+        </radialGradient>
+
+      </defs>
+      <g>
+        <polyline id="tentacle" ref="tentacle" v-for="t in 6" :key="t" />
+        <!-- <polyline id="tentacle" ref="tentacle" />
+                <polyline id="tentacle" ref="tentacle" />
+                <polyline id="tentacle" ref="tentacle" />
+                <polyline id="tentacle" ref="tentacle" />
+                <polyline id="tentacle" ref="tentacle" /> -->
+      </g>
+
+      <path id="head"
+        d="M0,30C0,20.56,2.52,11.23,16.328,9.4s23.32,4.76,33.047,11.28,9.727,10.68,0,16.8S30.137,48.53,16.328,47.16,0,39.44,0,30Z"
+        transform="translate(285 43) scale(1.5, 1.9)" fill="url(#pattern)" stroke="none" style="filter:url(#glow)" />
+    </svg>
+  </template>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+  <!-- <script src='https://assets.codepen.io/16327/MorphSVGPlugin3.min.js'></script> -->
+  <script src="./morph.js"></script>
+  <script src="./script.js"></script>
+  
+  <script>
+    function playAudio(url) {
+      new Audio(url).play();
+    }
+  </script>
+</body>
+
+</html>
